@@ -25,16 +25,20 @@ app.get("/", (req, res) => {
 });
 
 // Serve React build (optional for local use)
-app.use(express.static(path.join(__dirname, "build")));
+// app.use(express.static(path.join(__dirname, "build")));
 
-app.get("*", (req, res) => {
-    const buildPath = path.join(__dirname, "build", "index.html");
+// app.get("*", (req, res) => {
+//     const buildPath = path.join(__dirname, "build", "index.html");
 
-    if (require("fs").existsSync(buildPath)) {
-        res.sendFile(buildPath);
-    } else {
-        res.status(404).send("Frontend not found");
-    }
+//     if (require("fs").existsSync(buildPath)) {
+//         res.sendFile(buildPath);
+//     } else {
+//         res.status(404).send("Frontend not found");
+//     }
+// });
+
+app.get("/", (req, res) => {
+    res.send("Realtime Code Editor Backend is Running 🚀");
 });
 
 const userSocketMap = {};
